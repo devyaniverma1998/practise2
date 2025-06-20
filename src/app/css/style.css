@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Base Styles === */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-euclid-circular-a font-normal text-base text-dark-3 relative z-1;
+  }
+}
+
+/* === Component Styles === */
+@layer components {
+  .dropdown {
+    @apply flex-col gap-0 min-w-max xl:w-[193px] mt-2 lg:mt-0 bg-white shadow-2 ease-in duration-200 py-2.5 rounded-md border border-gray-3 left-0 hidden
+      xl:absolute xl:flex xl:translate-y-10 xl:opacity-0 xl:invisible
+      xl:group-hover:opacity-100 xl:group-hover:visible;
+  }
+}
+
+/* === Utility Styles === */
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+/* === 3rd-Party Fixes & Custom Elements === */
+
+/* Remove search input clear buttons */
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration,
+input[type='search']::-ms-clear,
+input[type='search']::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.custom-search {
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-radius: 0;
+}
+
+/* === Custom Select Dropdown === */
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  @apply bg-gray-1 rounded-l-[5px] border border-gray-3 !border-r-0 cursor-pointer text-dark text-custom-sm py-[11px] pl-3.5 pr-8 relative;
+}
+
+.select-selected:after {
+  content: url("data:image/svg+xml,...");
+  @apply absolute top-1/2 -translate-y-1/2 right-4.5 ease-out duration-200;
+}
+
+.select-selected.select-arrow-active:after {
+  @apply rotate-180 mt-0.5;
+}
+
+.select-items {
+  @apply absolute top-full left-0 right-0 z-99 mt-1.5 bg-white border border-gray-3 rounded-md shadow-2 py-2.5;
+}
+
+.select-items div {
+  @apply cursor-pointer text-dark-3 text-custom-sm py-[7px] px-4.5;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  @apply bg-gray-1 text-dark;
+}
+
+.select-hide {
+  display: none;
+}
+
+/* === Image Zoom === */
+/* .img-zoom-container img {
+  transition: 0.8s;
+}
+.img-zoom-container img:hover {
+  transform: scale(2);
+} */
+
+/* === Price Slider === */
+.priceSlide .noUi-target {
+  @apply mt-9 mb-5 bg-transparent shadow-none border-none;
+}
+.priceSlide .noUi-connects {
+  @apply h-1 bg-gray-3 rounded-full;
+}
+.priceSlide .noUi-connect {
+  @apply h-1 bg-red rounded-full;
+}
+.priceSlide .noUi-horizontal .noUi-handle {
+  @apply -top-3 h-7 w-7 bg-white border border-gray-4 shadow-range rounded-full;
+}
+.priceSlide .noUi-horizontal .noUi-handle::before {
+  @apply absolute w-4 h-4 bg-red rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+  content: "";
+}
+.priceSlide .noUi-tooltip {
+  @apply bg-transparent border-none p-0 text-custom-sm text-dark-4;
+}
+.noUi-horizontal .noUi-handle:after,
+.noUi-horizontal .noUi-handle:before {
+  @apply hidden;
+}
+
+/* === Range Slider === */
+.range-slider {
+  @apply w-full !h-[4px] bg-orange relative mb-3 rounded-md;
+}
+
+.slider .thumb {
+  @apply absolute -top-2 w-6 h-6 bg-red-dark border-[5px] border-blue-light-4 rounded-full;
+}
+
+.range-slider__thumb {
+  @apply !w-7 !h-7 !bg-white border border-blue-light-4 flex items-center justify-center;
+}
+
+.range-slider__thumb::after {
+  @apply bg-red;
+  content: "";
+  width: 16px;
+  height: 16px;
+  display: block;
+  border-radius: 100%;
+  position: absolute;
+}
+
+.range-slider__range {
+  @apply !bg-red;
+}
